@@ -1,0 +1,18 @@
+function [ ] = Plotting_fft( data )
+%UNTITLED Summary of this function goes here
+%   Detailed explanation goes here
+% Input variable is the path to the each data.txt file
+% data = load (path);
+fs = 20000;
+N = length(data);
+N_2 = ceil(N/2); 
+X_mag = abs(fft(data));
+X_abs = X_mag/(N/2);%to get the amplitudes divide by (N/2)
+fax_bin = (0:N-1);
+fax_Hz = fax_bin*fs/N;
+stem(fax_Hz(1:N_2),X_abs(1:N_2));
+title('Single sided amplitude spectrum with frequency axix in Hz');
+xlabel('Frequency in Hz');
+ylabel('Amplitude');
+
+end
